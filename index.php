@@ -36,7 +36,7 @@
 $plus_id = '106189723444098348646';
 
 // include our scraper class
-include_once('plus_cards.php');
+include_once('googleCard.php');
 
 // initiate an instance of our scraper class
 $plus = new googleCard($plus_id);
