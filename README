@@ -1,13 +1,76 @@
 googleCard
 ====================
 
-A very quick and rough PHP class to scrape data from google+
-Copyright (C) 2011  Mabujo
-http://plusdevs.com
-http://plusdevs.com/googlecard-googleplus-php-scraper/
+Scrape data about a user from Google+.
 
-See index.php for sample implementation
+This project used to be "A very quick and rough PHP class to scrape data
+from google+" but is now a procedural codebase with a minimalist PHP class
+wrapper (for existing users, and all those poor, poor, OO PHP enthusiasts
+out there... ;) and a bunch of bugfixes / improvements.
 
+Authors: 
+ - Original by Mabujo
+ - Rewrite by https://github.com/globalcitizen/
+
+URLs:
+ - http://plusdevs.com
+ - http://plusdevs.com/googlecard-googleplus-php-scraper/
+
+Example:
+ - See index.php for a sample implementation (OO)
+
+Requirements
+---------------------
+ - PHP with 'curl' and 'json' support compiled in (should be...)
+ - A writable cache directory, if you want to use caching (just say yes!)
+
+Installation
+---------------------
+ - The code should make its own cache directory if it has
+   rights, otherwise you may need to do this manually.
+
+Compatibility
+---------------------
+ - "Should" work on Windows as well as Unix platforms, however this is
+   untested
+
+Usage
+---------------------
+Basically it comes down to one function. You supply it with a Google+
+ID and it returns an array of information regarding that user. The 
+information returned is as follows:
+
+      'url'      URL to the user's Google+ profile
+      'img'      URL to the user's Google+ profile image
+      'count'    Total number of followers the user has
+      'name'     The user's name
+
+The interface differs slightly based upon your implementation style.
+
+ Procedural ("Traditional / Unix style")
+ ---------------------------------------
+  require_once('gc.php');
+  $googleplusid = '123456789012345678901';
+  $info = google_plus_user_info($googleplusid);
+  print $info['name'] . ' has ' . $info['count'] . ' followers.';
+
+ Object Oriented ("Enterprise Platform Framework Integration style")*
+ -------------------------------------------------------------------
+  include_once('googleCard.php');
+  $googleplusid = '123456789012345678901';
+  $plus = new googleCard($plus_id);
+  $data = $plus->googleCard();
+  print $data['name'] . ' has ' . $data['count'] . ' followers.';
+
+   * Also, usually a hell of a lot more typing, less concise code,
+     more implicit assumptions about integration paths, etc. See
+     'Coders at Work' or 'The Art of UNIX Programming' for some
+     well-considered and even-handed criticisms of OO's overuse.
+
+Configuration
+-------------
+There are some options available within the source, however you
+are encouraged to use the defaults.
 
 License
 ---------------------
