@@ -77,7 +77,7 @@ class googleCard
 		$this->getPage();
 
 		// parse the html to look for the h4 'have X in circles' element
-		preg_match('/<h4 class="a-c-ka-Sf">(.*?)<\/h4>/s', $this->html, $matches);
+		preg_match('/<h4 class="a-b-Fa-ug">(.*?)<\/h4>/s', $this->html, $matches);
 		$count = $matches[1];
 		$circles = preg_replace('/[^0-9_]/', '', $count);
 		if (empty($circles)) 
@@ -90,7 +90,7 @@ class googleCard
 		$name = $matches[1];
 
 		// parse the html for the img div
-		preg_match('/<div class="a-Ba-V-z-N">(.*?)<\/div>/s', $this->html, $matches);
+		preg_match('/<div class="a-R-Z-z-M">(.*?)<\/div>/s', $this->html, $matches);
 		$img_div = $matches[1];		
 
 		// parse the img div for the image src
